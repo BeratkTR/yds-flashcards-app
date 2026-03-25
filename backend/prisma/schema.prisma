@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        Int             @id @default(autoincrement())
+  username  String          @unique
+  password  String
+  createdAt DateTime        @default(now())
+  words     UserWordState[]
+}
+
+model Word {
+  id      Int             @id @default(autoincrement())
+  word    String
+  meaning String
+  users   UserWordState[]
+
+  @@map("words")
+}
+
+model UserWordState {
+  id             Int       @id @default(autoincrement())
+  userId         Int
+  wordId         Int
+  status         String    @default("UNSEEN") // "UNSEEN", "CORRECT", "INCORRECT"
+  lastReviewedAt DateTime  @default(now())
+  
+  // SRS Fields
+  incorrectCount Int       @default(0)
+  step           Int       @default(0) // 1=1 day, 2=7 days, 3=30 days
+  nextReviewDate DateTime?
+
+  user     User @relation(fields: [userId], references: [id])
+  word Word @relation(fields: [wordId], references: [id])
+
+  @@unique([userId, wordId])
+}

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://3.66.188.139:8000/api'
+  baseURL: 'https://ydsapi.beratkaragol.dev/api'
 });
 
 api.interceptors.request.use((config) => {

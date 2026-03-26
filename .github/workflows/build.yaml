@@ -14,6 +14,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: mobile
+
     steps:
       - name: Upload Code
         uses: actions/checkout@v4
@@ -38,7 +42,7 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
-          files: build/app/outputs/flutter-apk/YDS-Flashcards.apk
+          files: mobile/build/app/outputs/flutter-apk/app-release.apk
           name: Release ${{ github.ref_name }}
           draft: false
           prerelease: false

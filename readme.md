@@ -11,7 +11,6 @@
 
 ```nginx
 # /etc/nginx/conf.d/yds-backend.conf
-
 server {
     listen 80;
     server_name api.siteniz.com; # KENDİ DOMAININIZ

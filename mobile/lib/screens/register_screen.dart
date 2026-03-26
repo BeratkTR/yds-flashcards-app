@@ -46,7 +46,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         setState(() => _errorMessage = data['error'] ?? 'Registration failed');
       }
     } catch (e) {
-      setState(() => _errorMessage = "Network error. Make sure server is running.");
+      setState(() => _errorMessage = "Hata detayı: $e");
     } finally {
       if (mounted) setState(() => _isLoading = false);
     }

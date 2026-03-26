@@ -43,14 +43,14 @@ class _LoginScreenState extends State<LoginScreen> {
         final prefs = await SharedPreferences.getInstance();
         await prefs.setString('token', data['token']);
         if (!mounted) return;
-        // Navigate to dashboard
-        // Navigator.pushReplacementNamed(context, '/stats');
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Logged in successfully!")));
+        
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Giriş yapıldı! Yönlendiriliyorsunuz...")));
+        Navigator.pushReplacementNamed(context, '/stats');
       } else {
         setState(() => _errorMessage = data['error'] ?? 'Login failed');
       }
     } catch (e) {
-      setState(() => _errorMessage = "Network error. Make sure server is running.");
+      setState(() => _errorMessage = "Hata detayı: $e");
     } finally {
       if (mounted) setState(() => _isLoading = false);
     }

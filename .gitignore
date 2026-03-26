@@ -59,3 +59,17 @@ Thumbs.db
 .cache/
 .parcel-cache/
 .turbo/
+
+# Flutter & Dart
+.dart_tool/
+.packages
+.pub-cache/
+.pub/
+build/
+*.apk
+*.aab
+*.keystore
+.symlinks/
+Pods/
+Flutter/Generated.xcconfig
+Flutter/flutter_export_environment.sh
